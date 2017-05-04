@@ -1,5 +1,6 @@
 <h2>Order Sheet</h2>
-<form novalidate [formGroup]="orderSheetForm" (ngSubmit)="onSubmitForm()">
+<form novalidate [formGroup]="orderSheetForm"
+                 (ngSubmit)="onSubmitForm()">
   <section class="customer-name">
     <input formControlName="customerName" type="text" placeholder="Your Name">
     <div *ngIf="customerNameControl.errors" class="errors">
@@ -27,6 +28,8 @@
       </li>
     </ul>
   </section>
+
+  <!--2. wired up radio input -->
   <section class="specialty-sandwiches">
     <h1>Specialty Sandwiches</h1>
     <label>Me wants:</label>
@@ -37,6 +40,9 @@
       <option value="Cali Cheesesteak">Cali Cheesesteak</option>
     </select>
   </section>
+
+  <!--2. wired up checkbox input, nested in formGroup >formControl on ts-->
+  <!-- *ngIf -> if specialtySandwich has a value, builyourown will be hidden -->
   <section *ngIf="!orderSheetForm.get('specialtySandwich').value" class="build-your-own">
     <h1>Build Your Own</h1>
     <section>
@@ -61,6 +67,8 @@
         </div>
       </div>
     </section>
+
+    <!--4. wire up formGroup -->
     <section formGroupName="meats">
       <h1>The Meats</h1>
       <ul>
@@ -113,6 +121,8 @@
       </ul>
     </section>
   </section>
+
+  <!-- 1. wire up the text input, formArray, (click) event handler-->
   <section formArrayName="weirdRequests" class="weird-requests">
     <h1>Weird Requests</h1>
     <ul>
@@ -123,6 +133,8 @@
     </ul>
     <button type="button" (click)="onAddWeirdRequest()">Add a Request</button>
   </section>
+
+  <!--4. wire up textarea -->
   <section>
     <h1>Other Notes</h1>
     <textarea formControlName="otherNotes"></textarea>

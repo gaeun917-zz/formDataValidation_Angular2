@@ -47,6 +47,7 @@ export class OrderSheetComponent {
     {
       validator: CustomValidators.requiredWhen('bread', 'specialtySandwich')
     });
+    // formArray
     this.weirdRequestsControls = this.orderSheetForm.get('weirdRequests') as FormArray;
     this.customerNameControl = this.orderSheetForm.get('customerName');
     this.customerNameControl.valueChanges
